@@ -8,7 +8,8 @@ Aspiring developer and creative designer passionate about technology and visual 
 ## 🔧 My Skills
 - **C Programming** – Writing efficient and clean code for academic and personal projects.
 - **Poster Designing & Editing** – Transforming ideas into eye-catching visuals.
-- **Web Development** – HTML & CSS for sleek and responsive web pages.
+- **Web Development** – HTML & CSS for sleek and responsive web pages(Vibe coding a bit).
+- **DBMS** - mysql,mariadb,postgressql knowledge.
 
 ---
 
