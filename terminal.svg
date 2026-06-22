@@ -6,50 +6,83 @@
   <text x="375" y="20" fill="#8b949e" font-size="12" text-anchor="middle">bash — terminal</text>
 
   <style>
-    .cmd { fill: #39FF14; font-weight: bold; visibility: hidden; animation: reveal 0.1s forwards; }
-    .out { fill: #c9d1d9; visibility: hidden; animation: reveal 0.1s forwards; }
-    .cursor { fill: #39FF14; animation: blink 0.8s infinite; }
+    /* Global visibility animations */
+    .p1, .m1 { visibility: hidden; animation: show 0s forwards 0.2s; }
+    .o1 { visibility: hidden; animation: show 0s forwards 0.5s; }
+    
+    .p2, .m2 { visibility: hidden; animation: show 0s forwards 0.8s; }
+    .o2 { visibility: hidden; animation: show 0s forwards 1.3s; }
+    
+    .p3, .m3 { visibility: hidden; animation: show 0s forwards 1.7s; }
+    .o3 { visibility: hidden; animation: show 0s forwards 2.3s; }
+    
+    .p4, .m4 { visibility: hidden; animation: show 0s forwards 2.7s; }
+    .o4 { visibility: hidden; animation: show 0s forwards 3.4s; }
+    
+    .pf, .cf { visibility: hidden; animation: show 0s forwards 3.7s; }
 
-    @keyframes reveal { to { visibility: visible; } }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes show { to { visibility: visible; } }
+    @keyframes hide { to { visibility: hidden; } }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
-    /* Pacing Delays */
-    .t1 { animation-delay: 0.2s; }
-    .t2 { animation-delay: 0.5s; }
+    /* Sequenced step typing timelines for cursors/masks */
+    .m1 { animation: show 0s forwards 0.2s, move1 0.3s steps(6) forwards 0.2s, hide 0s forwards 0.5s; }
+    .m2 { animation: show 0s forwards 0.8s, move2 0.5s steps(13) forwards 0.8s, hide 0s forwards 1.3s; }
+    .m3 { animation: show 0s forwards 1.7s, move3 0.6s steps(16) forwards 1.7s, hide 0s forwards 2.3s; }
+    .m4 { animation: show 0s forwards 2.7s, move4 0.7s steps(20) forwards 2.7s, hide 0s forwards 3.4s; }
     
-    .t3 { animation-delay: 0.9s; }
-    .t4 { animation-delay: 1.3s; }
-    
-    .t5 { animation-delay: 1.8s; }
-    .t6 { animation-delay: 2.1s; }
-    .t7 { animation-delay: 2.3s; }
-    .t8 { animation-delay: 2.5s; }
-    
-    .t9 { animation-delay: 3.0s; }
-    .t10 { animation-delay: 3.3s; }
-    .t11 { animation-delay: 3.6s; }
+    /* Permanent blinking final cursor */
+    .cf { animation: show 0s forwards 3.7s, blink 0.8s infinite 3.7s; }
+
+    /* Accurate translate shifts based on character counts */
+    @keyframes move1 { from { transform: translate(17px, 0); } to { transform: translate(68px, 0); } }
+    @keyframes move2 { from { transform: translate(17px, 0); } to { transform: translate(127.5px, 0); } }
+    @keyframes move3 { from { transform: translate(17px, 0); } to { transform: translate(153px, 0); } }
+    @keyframes move4 { from { transform: translate(17px, 0); } to { transform: translate(187px, 0); } }
   </style>
 
   <g transform="translate(25, 30)">
-    <text x="0" y="30" class="cmd t1">$ whoami</text>
-    <text x="0" y="55" class="out t2">&gt; karunlk</text>
+    
+    <text x="0" y="30" class="p1"><tspan fill="#39FF14" font-weight: bold;">$ </tspan>whoami</text>
+    <g class="m1">
+      <rect x="0" y="16" width="8" height="15" fill="#39FF14"/>
+      <rect x="8" y="14" width="700" height="20" fill="#0d1117"/>
+    </g>
+    <text x="0" y="55" class="o1" fill="#c9d1d9">&gt; karunlk</text>
 
-    <text x="0" y="90" class="cmd t3">$ cat about.txt</text>
-    <text x="0" y="115" class="out t4">Engineering student with a growing interest in software, AI,</text>
-    <text x="0" y="135" class="out t4">and building things people actually use. Spend most days deep</text>
-    <text x="0" y="155" class="out t4">in coursework — the rest exploring app ideas, startups, and</text>
-    <text x="0" y="175" class="out t4">new tech.</text>
+    <text x="0" y="90" class="p2"><tspan fill="#39FF14" font-weight: bold;">$ </tspan>cat about.txt</text>
+    <g class="m2">
+      <rect x="0" y="76" width="8" height="15" fill="#39FF14"/>
+      <rect x="8" y="74" width="700" height="20" fill="#0d1117"/>
+    </g>
+    <g class="o2">
+      <text x="0" y="115">Engineering student with a growing interest in software, AI,</text>
+      <text x="0" y="135">and building things people actually use. Spend most days deep</text>
+      <text x="0" y="155">in coursework — the rest exploring app ideas, startups, and</text>
+      <text x="0" y="175">new tech.</text>
+    </g>
 
-    <text x="0" y="210" class="cmd t5">$ status --verbose</text>
-    <text x="0" y="235" class="out t6">Learning    : DSA • Linux • Systems</text>
-    <text x="0" y="255" class="out t7">Building    : Side Projects, Academic Projects &amp; club Projects</text>
-    <text x="0" y="275" class="out t8">Exploring   : AI tools • FOSS • Devops • product design</text>
-    <text x="0" y="295" class="out t8">Mindset     : Ready to explore new stuff, Build problem solving software, never stop learning</text>
+    <text x="0" y="210" class="p3"><tspan fill="#39FF14" font-weight: bold;">$ </tspan>status --verbose</text>
+    <g class="m3">
+      <rect x="0" y="196" width="8" height="15" fill="#39FF14"/>
+      <rect x="8" y="194" width="700" height="20" fill="#0d1117"/>
+    </g>
+    <g class="o3">
+      <text x="0" y="235">Learning    : DSA • Linux • Systems</text>
+      <text x="0" y="255">Building    : Side Projects, Academic Projects &amp; club Projects</text>
+      <text x="0" y="275">Exploring   : AI tools • FOSS • Devops • product design</text>
+      <text x="0" y="295">Mindset     : Ready to explore new stuff, Build problem solving software, never stop learning</text>
+    </g>
 
-    <text x="0" y="330" class="cmd t9">$ cat availability.txt</text>
-    <text x="0" y="355" class="out t10">&gt;  open to collabs, ideas, and good conversations</text>
+    <text x="0" y="330" class="p4"><tspan fill="#39FF14" font-weight: bold;">$ </tspan>cat availability.txt</text>
+    <g class="m4">
+      <rect x="0" y="316" width="8" height="15" fill="#39FF14"/>
+      <rect x="8" y="314" width="700" height="20" fill="#0d1117"/>
+    </g>
+    <text x="0" y="355" class="o4">&gt;  open to collabs, ideas, and good conversations</text>
 
-    <text x="0" y="395" class="cmd t11">$ <tspan class="cursor">█</tspan></text>
+    <text x="0" y="395" class="pf"><tspan fill="#39FF14" font-weight: bold;">$ </tspan></text>
+    <rect x="17" y="381" width="8" height="15" fill="#39FF14" class="cf"/>
+
   </g>
 </svg>
-
