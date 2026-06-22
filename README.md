@@ -78,7 +78,7 @@ $ cat availability.txt
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=39FF14)](https://linkedin.com/in/karun-kodeti-861895347)
 [![Instagram](https://img.shields.io/badge/Instagram-000000?style=for-the-badge&logo=instagram&logoColor=39FF14)](https://www.instagram.com/karun_lakshman_)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=googlechrome&logoColor=39FF14)](https://karunlk.github.io/Karun-Lakshman.github.io/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=googlechrome&logoColor=39FF14)](https://karunlk.github.io/protfolio/)
 [![Email](https://img.shields.io/badge/Email-000000?style=for-the-badge&logo=gmail&logoColor=39FF14)](mailto:karunkodeti@gmail.com)
 
 </div>
