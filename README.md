@@ -8,29 +8,13 @@
 
 <br/>
 
-```bash
-$ whoami
-> karunlk
-
-$ cat about.txt
-Engineering student with a growing interest in software, AI,
-and building things people actually use. Spend most days deep
-in coursework — the rest exploring app ideas, startups, and
-new tech.
-
-$ status --verbose
-Learning    : DSA • Linux • Systems 
-Building    : Side Projects, Academic Projects & club Projects
-Exploring   : AI tools • FOSS • Devops • product design
-Mindset     : Ready to explore new stuff, Build problem solving software, never stop learning
-
-$ cat availability.txt
->  open to collabs, ideas, and good conversations
-```
+<div align="center">
+  <img src="./terminal.svg" width="100%" style="max-width: 750px;" />
+</div>
 
 <br/>
 
-### 🛠️ Tech I've been working with
+###  Tech I've been working with
 
 <div align="center">
 
@@ -48,7 +32,7 @@ $ cat availability.txt
 
 <br/>
 
-### 📊 GitHub Stats
+###  GitHub Stats
 
 <div align="center">
 
