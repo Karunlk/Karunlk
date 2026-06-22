@@ -1,124 +1,260 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 490" width="100%" style="background: #0d1117; border-radius: 8px;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 460" width="100%" style="background: #0d1117; border-radius: 8px;" role="img" aria-labelledby="termTitle">
+
+  <title id="termTitle">Animated terminal showing developer profile information</title>
+
   <style>
+
+    /* Global Text Styling */
+
     text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; fill: #c9d1d9; }
+
     .prompt { fill: #39FF14; font-weight: bold; }
+
     .cursor { fill: #39FF14; }
+
+    .cover { fill: #0d1117; }
+
+
+
+    /* Group Timelines (Reveals the lines step-by-step) */
+
+    .g2 { opacity: 0; animation: reveal 0s forwards 1.0s; }
+
+    .g3 { opacity: 0; animation: reveal 0s forwards 2.1s; }
+
+    .g4 { opacity: 0; animation: reveal 0s forwards 3.2s; }
+
+    .gf { opacity: 0; animation: reveal 0s forwards 4.4s; }
+
+
+
+    /* Output Timelines (Drops the answers after typing finishes) */
+
+    .out1 { opacity: 0; animation: reveal 0s forwards 0.7s; }
+
+    .out2 { opacity: 0; animation: reveal 0s forwards 1.8s; }
+
+    .out3 { opacity: 0; animation: reveal 0s forwards 2.9s; }
+
+    .out4 { opacity: 0; animation: reveal 0s forwards 4.1s; }
+
+
+
+    /* Typing Cover Animations — left edge advances WITH the shrinking width,
+       so the cover retreats left-to-right in sync with the cursor (was previously
+       shrinking from the right, which made text reveal backwards). */
+
+    .cov1 { animation: typeCov1 0.4s linear forwards 0.2s; }
+
+    .cov2 { animation: typeCov2 0.5s linear forwards 1.2s; }
+
+    .cov3 { animation: typeCov3 0.5s linear forwards 2.3s; }
+
+    .cov4 { animation: typeCov4 0.6s linear forwards 3.4s; }
+
+
+
+    /* Transient Cursor Movements */
+
+    .cur1 { animation: moveCur1 0.4s linear forwards 0.2s, blink 0.4s infinite; }
+
+    .cur2 { animation: moveCur2 0.5s linear forwards 1.2s, blink 0.4s infinite; }
+
+    .cur3 { animation: moveCur3 0.5s linear forwards 2.3s, blink 0.4s infinite; }
+
+    .cur4 { animation: moveCur4 0.6s linear forwards 3.4s, blink 0.4s infinite; }
+
+
+
+    /* Active Cursor Group Destroyers (Vanish when output drops) */
+
+    .cg1 { animation: hide 0s forwards 0.7s; }
+
+    .cg2 { animation: hide 0s forwards 1.8s; }
+
+    .cg3 { animation: hide 0s forwards 2.9s; }
+
+    .cg4 { animation: hide 0s forwards 4.1s; }
+
+
+
+    /* Final Loop Idle Cursor */
+
+    .curFinal { animation: blink 0.8s infinite; }
+
+
+
+    /* Pure CSS Animation Engines */
+
+    @keyframes reveal { to { opacity: 1; } }
+
+    @keyframes hide { to { opacity: 0; visibility: hidden; } }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+
+
+    /* Cover keyframes: x and width move together so the covered region
+       always sits to the right of the cursor, shrinking left-to-right. */
+
+    @keyframes typeCov1 { to { x: 78px; width: 0px; } }
+
+    @keyframes typeCov2 { to { x: 128px; width: 0px; } }
+
+    @keyframes typeCov3 { to { x: 158px; width: 0px; } }
+
+    @keyframes typeCov4 { to { x: 198px; width: 0px; } }
+
+
+
+    /* Pixel-tracked cursor movements matching character lengths */
+
+    @keyframes moveCur1 { to { x: 78px; } }
+
+    @keyframes moveCur2 { to { x: 128px; } }
+
+    @keyframes moveCur3 { to { x: 158px; } }
+
+    @keyframes moveCur4 { to { x: 198px; } }
+
+
+
+    /* Respect reduced-motion preference: skip straight to the finished state */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .g2, .g3, .g4, .gf, .out1, .out2, .out3, .out4 { animation: none; opacity: 1; }
+
+      .cover, .cur1, .cur2, .cur3, .cur4 { display: none; }
+
+      .curFinal { animation: blink 1.2s infinite; }
+
+    }
+
   </style>
 
+
+
   <rect width="100%" height="30" fill="#161b22" rx="8" ry="8"/>
+
   <circle cx="20" cy="15" r="6" fill="#ff5f56"/>
+
   <circle cx="40" cy="15" r="6" fill="#ffbd2e"/>
+
   <circle cx="60" cy="15" r="6" fill="#27c93f"/>
+
   <text x="375" y="20" fill="#8b949e" font-size="12" text-anchor="middle">bash — terminal</text>
 
+
+
   <g transform="translate(25, 30)">
-    
-    <text x="0" y="30"><tspan class="prompt">$ </tspan></text>
-    
-    <clipPath id="clip1">
-      <rect x="18" y="10" width="0" height="30">
-        <animate attributeName="width" from="0" to="60" begin="0.2s" dur="0.3s" fill="freeze" />
-      </rect>
-    </clipPath>
-    <text x="18" y="30" clip-path="url(#clip1)">whoami</text>
-    
-    <rect x="18" y="16" width="8" height="15" class="cursor" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="0.2s" fill="freeze" />
-      <animate attributeName="x" from="18" to="74" begin="0.2s" dur="0.3s" fill="freeze" />
-      <animate attributeName="visibility" to="hidden" begin="0.5s" fill="freeze" />
-    </rect>
-
-    <text x="0" y="55" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="0.5s" fill="freeze" />
-      &gt; karunlk
-    </text>
 
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="0.9s" fill="freeze" />
-      <text x="0" y="90"><tspan class="prompt">$ </tspan></text>
-    </g>
 
-    <clipPath id="clip2">
-      <rect x="18" y="70" width="0" height="30">
-        <animate attributeName="width" from="0" to="120" begin="0.9s" dur="0.5s" fill="freeze" />
-      </rect>
-    </clipPath>
-    <text x="18" y="90" clip-path="url(#clip2)">cat about.txt</text>
+    <g class="g1">
 
-    <rect x="18" y="76" width="8" height="15" class="cursor" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="0.9s" fill="freeze" />
-      <animate attributeName="x" from="18" to="130" begin="0.9s" dur="0.5s" fill="freeze" />
-      <animate attributeName="visibility" to="hidden" begin="1.4s" fill="freeze" />
-    </rect>
+      <text x="0" y="30"><tspan class="prompt">$ </tspan>whoami</text>
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="1.4s" fill="freeze" />
-      <text x="0" y="115">Engineering student with a growing interest in software, AI,</text>
-      <text x="0" y="135">and building things people actually use. Spend most days deep</text>
-      <text x="0" y="155">in coursework — the rest exploring app ideas, startups, and</text>
-      <text x="0" y="175">new tech.</text>
+      <rect x="18" y="16" width="60" height="18" class="cover cov1"/>
+
+      <g class="cg1">
+
+        <rect x="18" y="16" width="8" height="15" class="cursor cur1"/>
+
+      </g>
+
+      <text x="0" y="55" class="out1">&gt; karunlk</text>
+
     </g>
 
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="1.9s" fill="freeze" />
-      <text x="0" y="210"><tspan class="prompt">$ </tspan></text>
+
+    <g class="g2">
+
+      <text x="0" y="90"><tspan class="prompt">$ </tspan>cat about.txt</text>
+
+      <rect x="18" y="76" width="110" height="18" class="cover cov2"/>
+
+      <g class="cg2">
+
+        <rect x="18" y="76" width="8" height="15" class="cursor cur2"/>
+
+      </g>
+
+      <g class="out2">
+
+        <text x="0" y="115">Engineering student with a growing interest in software, AI,</text>
+
+        <text x="0" y="135">and building things people actually use. Spend most days deep</text>
+
+        <text x="0" y="155">in coursework — the rest exploring app ideas, startups, and</text>
+
+        <text x="0" y="175">new tech.</text>
+
+      </g>
+
     </g>
 
-    <clipPath id="clip3">
-      <rect x="18" y="190" width="0" height="30">
-        <animate attributeName="width" from="0" to="150" begin="1.9s" dur="0.5s" fill="freeze" />
-      </rect>
-    </clipPath>
-    <text x="18" y="210" clip-path="url(#clip3)">status --verbose</text>
 
-    <rect x="18" y="196" width="8" height="15" class="cursor" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="1.9s" fill="freeze" />
-      <animate attributeName="x" from="18" to="155" begin="1.9s" dur="0.5s" fill="freeze" />
-      <animate attributeName="visibility" to="hidden" begin="2.4s" fill="freeze" />
-    </rect>
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="2.4s" fill="freeze" />
-      <text x="0" y="235">Learning    : DSA • Linux • Systems</text>
-      <text x="0" y="255">Building    : Side Projects, Academic Projects &amp; club Projects</text>
-      <text x="0" y="275">Exploring   : AI tools • FOSS • Devops • product design</text>
-      <text x="0" y="295">Mindset     : Ready to explore new stuff, Build problem solving software, never stop learning</text>
+    <g class="g3">
+
+      <text x="0" y="210"><tspan class="prompt">$ </tspan>status --verbose</text>
+
+      <rect x="18" y="196" width="140" height="18" class="cover cov3"/>
+
+      <g class="cg3">
+
+        <rect x="18" y="196" width="8" height="15" class="cursor cur3"/>
+
+      </g>
+
+      <g class="out3">
+
+        <text x="0" y="235">Learning    : DSA • Linux • Systems</text>
+
+        <text x="0" y="255">Building    : Side Projects, Academic Projects &amp; club Projects</text>
+
+        <text x="0" y="275">Exploring   : AI tools • FOSS • Devops • product design</text>
+
+        <text x="0" y="295">Mindset     : Ready to explore new stuff,</text>
+
+        <text x="118" y="315">Build problem solving software, never stop learning</text>
+
+      </g>
+
     </g>
 
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="2.9s" fill="freeze" />
-      <text x="0" y="330"><tspan class="prompt">$ </tspan></text>
+
+    <g class="g4">
+
+      <text x="0" y="350"><tspan class="prompt">$ </tspan>cat availability.txt</text>
+
+      <rect x="18" y="336" width="180" height="18" class="cover cov4"/>
+
+      <g class="cg4">
+
+        <rect x="18" y="336" width="8" height="15" class="cursor cur4"/>
+
+      </g>
+
+      <text x="0" y="375" class="out4">&gt;  open to collabs, ideas, and good conversations</text>
+
     </g>
 
-    <clipPath id="clip4">
-      <rect x="18" y="310" width="0" height="30">
-        <animate attributeName="width" from="0" to="185" begin="2.9s" dur="0.6s" fill="freeze" />
-      </rect>
-    </clipPath>
-    <text x="18" y="330" clip-path="url(#clip4)">cat availability.txt</text>
-
-    <rect x="18" y="316" width="8" height="15" class="cursor" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="2.9s" fill="freeze" />
-      <animate attributeName="x" from="18" to="192" begin="2.9s" dur="0.6s" fill="freeze" />
-      <animate attributeName="visibility" to="hidden" begin="3.5s" fill="freeze" />
-    </rect>
-
-    <text x="0" y="355" visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="3.5s" fill="freeze" />
-      &gt;  open to collabs, ideas, and good conversations
-    </text>
 
 
-    <g visibility="hidden">
-      <animate attributeName="visibility" to="visible" begin="4.0s" fill="freeze" />
-      <text x="0" y="395"><tspan class="prompt">$ </tspan></text>
-      <rect x="18" y="381" width="8" height="15" class="cursor">
-        <animate attributeName="opacity" values="1;0;1" dur="0.8s" repeatCount="indefinite" />
-      </rect>
+    <g class="gf">
+
+      <text x="0" y="415"><tspan class="prompt">$ </tspan></text>
+
+      <rect x="18" y="401" width="8" height="15" class="cursor curFinal"/>
+
     </g>
+
+
 
   </g>
+
 </svg>
