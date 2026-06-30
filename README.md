@@ -36,7 +36,7 @@
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=karunlk&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=39FF14&icon_color=39FF14&text_color=c9d1d9" width="48%" />
+<img src="https://github-readme-stats-fast.vercel.app/api?username=Karunlk&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=39FF14&icon_color=39FF14&text_color=c9d1d9" width="48%" />
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=karunlk&theme=tokyonight&hide_border=true&background=0d1117&ring=39FF14&fire=39FF14&currStreakLabel=39FF14" width="48%" />
 
 <br/>
